@@ -1,0 +1,323 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D57DB1FF1CABF6A9008ED6AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DB1FE1CABF6A9008ED6AE /* AppDelegate.swift */; };
+		D57DB2011CABF6A9008ED6AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DB2001CABF6A9008ED6AE /* ViewController.swift */; };
+		D57DB2041CABF6A9008ED6AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D57DB2021CABF6A9008ED6AE /* Main.storyboard */; };
+		D57DB2061CABF6A9008ED6AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D57DB2051CABF6A9008ED6AE /* Assets.xcassets */; };
+		D57DB2091CABF6A9008ED6AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D57DB2071CABF6A9008ED6AE /* LaunchScreen.storyboard */; };
+		D57DB2111CAC10A8008ED6AE /* GreenHouseHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DB2101CAC10A8008ED6AE /* GreenHouseHomeView.swift */; };
+		D57DB2151CAC172D008ED6AE /* Greenhouse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DB2141CAC172D008ED6AE /* Greenhouse.swift */; };
+		D57DB2171CACB1F9008ED6AE /* SensorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DB2161CACB1F9008ED6AE /* SensorView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D57DB1FB1CABF6A9008ED6AE /* MySmartAgriculture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySmartAgriculture.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D57DB1FE1CABF6A9008ED6AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D57DB2001CABF6A9008ED6AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D57DB2031CABF6A9008ED6AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D57DB2051CABF6A9008ED6AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D57DB2081CABF6A9008ED6AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D57DB20A1CABF6A9008ED6AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D57DB2101CAC10A8008ED6AE /* GreenHouseHomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreenHouseHomeView.swift; sourceTree = "<group>"; };
+		D57DB2141CAC172D008ED6AE /* Greenhouse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Greenhouse.swift; sourceTree = "<group>"; };
+		D57DB2161CACB1F9008ED6AE /* SensorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D57DB1F81CABF6A9008ED6AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D57DB1F21CABF6A9008ED6AE = {
+			isa = PBXGroup;
+			children = (
+				D57DB1FD1CABF6A9008ED6AE /* MySmartAgriculture */,
+				D57DB1FC1CABF6A9008ED6AE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D57DB1FC1CABF6A9008ED6AE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D57DB1FB1CABF6A9008ED6AE /* MySmartAgriculture.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D57DB1FD1CABF6A9008ED6AE /* MySmartAgriculture */ = {
+			isa = PBXGroup;
+			children = (
+				D57DB1FE1CABF6A9008ED6AE /* AppDelegate.swift */,
+				D57DB2131CAC1710008ED6AE /* Model */,
+				D57DB2121CAC16FE008ED6AE /* View */,
+				D57DB2021CABF6A9008ED6AE /* Main.storyboard */,
+				D57DB2051CABF6A9008ED6AE /* Assets.xcassets */,
+				D57DB2071CABF6A9008ED6AE /* LaunchScreen.storyboard */,
+				D57DB20A1CABF6A9008ED6AE /* Info.plist */,
+			);
+			path = MySmartAgriculture;
+			sourceTree = "<group>";
+		};
+		D57DB2121CAC16FE008ED6AE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D57DB2001CABF6A9008ED6AE /* ViewController.swift */,
+				D57DB2101CAC10A8008ED6AE /* GreenHouseHomeView.swift */,
+				D57DB2161CACB1F9008ED6AE /* SensorView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		D57DB2131CAC1710008ED6AE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D57DB2141CAC172D008ED6AE /* Greenhouse.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D57DB1FA1CABF6A9008ED6AE /* MySmartAgriculture */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D57DB20D1CABF6A9008ED6AE /* Build configuration list for PBXNativeTarget "MySmartAgriculture" */;
+			buildPhases = (
+				D57DB1F71CABF6A9008ED6AE /* Sources */,
+				D57DB1F81CABF6A9008ED6AE /* Frameworks */,
+				D57DB1F91CABF6A9008ED6AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MySmartAgriculture;
+			productName = MySmartAgriculture;
+			productReference = D57DB1FB1CABF6A9008ED6AE /* MySmartAgriculture.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D57DB1F31CABF6A9008ED6AE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = joyyog;
+				TargetAttributes = {
+					D57DB1FA1CABF6A9008ED6AE = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = JC4ULDFGPK;
+					};
+				};
+			};
+			buildConfigurationList = D57DB1F61CABF6A9008ED6AE /* Build configuration list for PBXProject "MySmartAgriculture" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D57DB1F21CABF6A9008ED6AE;
+			productRefGroup = D57DB1FC1CABF6A9008ED6AE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D57DB1FA1CABF6A9008ED6AE /* MySmartAgriculture */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D57DB1F91CABF6A9008ED6AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D57DB2091CABF6A9008ED6AE /* LaunchScreen.storyboard in Resources */,
+				D57DB2061CABF6A9008ED6AE /* Assets.xcassets in Resources */,
+				D57DB2041CABF6A9008ED6AE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D57DB1F71CABF6A9008ED6AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D57DB2171CACB1F9008ED6AE /* SensorView.swift in Sources */,
+				D57DB2151CAC172D008ED6AE /* Greenhouse.swift in Sources */,
+				D57DB2111CAC10A8008ED6AE /* GreenHouseHomeView.swift in Sources */,
+				D57DB2011CABF6A9008ED6AE /* ViewController.swift in Sources */,
+				D57DB1FF1CABF6A9008ED6AE /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D57DB2021CABF6A9008ED6AE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D57DB2031CABF6A9008ED6AE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D57DB2071CABF6A9008ED6AE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D57DB2081CABF6A9008ED6AE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D57DB20B1CABF6A9008ED6AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D57DB20C1CABF6A9008ED6AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D57DB20E1CABF6A9008ED6AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MySmartAgriculture/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = xihakai.MySmartAgriculture;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D57DB20F1CABF6A9008ED6AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MySmartAgriculture/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = xihakai.MySmartAgriculture;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D57DB1F61CABF6A9008ED6AE /* Build configuration list for PBXProject "MySmartAgriculture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D57DB20B1CABF6A9008ED6AE /* Debug */,
+				D57DB20C1CABF6A9008ED6AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D57DB20D1CABF6A9008ED6AE /* Build configuration list for PBXNativeTarget "MySmartAgriculture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D57DB20E1CABF6A9008ED6AE /* Debug */,
+				D57DB20F1CABF6A9008ED6AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D57DB1F31CABF6A9008ED6AE /* Project object */;
+}
