@@ -8,16 +8,13 @@
 
 import UIKit
 
-
-var greenHouses = [GreenHouse]()
+//var greenHouses = [greenHouse]()
+var sensors = [Sensor]()
 var keyString = [String]()
 var keyString2 = [String]()
 var nameString = [String]()
 var houseInfo = [String]()
-//var a = GreenHouse(temperature: 1.1,hnmidity: 1.1)
-//var b = GreenHouse(temperature: 2.2,hnmidity: 2.2)
-//var c = GreenHouse(temperature: 3.3, hnmidity: 3.3)
-var a = GreenHouse(temperature:1.1,hnmidity: 1.1)
+var a = Sensor(temperature:1.1,hnmidity: 1.1)
 var userDefault:NSUserDefaults = NSUserDefaults.standardUserDefaults()
 var number:Int = 1
 
@@ -181,7 +178,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
                     keyString.append(String(greenhouse_id))
                     let greenhouse_name = information.objectForKey("greenhouse_name") as! NSString
                     nameString.append(String(greenhouse_name))
-                    greenHouses.append(a)
+                    //sensors.append(a)
                 }
                 
                 

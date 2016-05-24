@@ -25,7 +25,7 @@ class GreenHouseHomeView: UIViewController,UIScrollViewDelegate{
     
 
     @IBAction func exit(sender: UIButton) {
-        greenHouses.removeAll()
+        sensors.removeAll()
         keyString.removeAll()
         keyString2.removeAll()
         nameString.removeAll()
@@ -37,7 +37,7 @@ class GreenHouseHomeView: UIViewController,UIScrollViewDelegate{
     
     
     override func viewDidLoad() {
-        print("aaaaa\(greenHouses.count)")
+        
         print(nameString)
         print(keyString)
         super.viewDidLoad()
@@ -86,9 +86,9 @@ class GreenHouseHomeView: UIViewController,UIScrollViewDelegate{
     func createHouses(){
         
 
-        if greenHouses.count > 0{
+        if nameString.count > 0{
             
-            for i in 1...greenHouses.count{
+            for i in 1...nameString.count{
                 if i == 1{
                 let greenHouseButton = UIButton(frame:CGRectMake(view.frame.width/20, CGFloat((i-1)) * (view.frame.height/10 + 15),view.frame.width*9/10,view.frame.height/10))
                 greenHouseButton.backgroundColor = UIColor.whiteColor()
@@ -113,7 +113,7 @@ class GreenHouseHomeView: UIViewController,UIScrollViewDelegate{
                 greenHouseButton.addSubview(showHouseLabel)
                 greenHouseButton.layer.setAffineTransform(CGAffineTransformMakeScale(0.1, 0.1))
                 
-                greenHouseButton.addTarget(self, action: #selector(GreenHouseHomeView.gotoSensor), forControlEvents: .TouchUpInside)
+                greenHouseButton.addTarget(self, action: #selector(GreenHouseHomeView.gotoSensorList(_:)), forControlEvents: .TouchUpInside)
                     
                 buttons.append(greenHouseButton)
                 }else{
@@ -139,7 +139,7 @@ class GreenHouseHomeView: UIViewController,UIScrollViewDelegate{
                     showHouseLabel.textColor = UIColor.blackColor()
                     showHouseLabel.textAlignment = .Center
                     greenHouseButton.addSubview(showHouseLabel)
-                    greenHouseButton.addTarget(self, action: #selector(GreenHouseHomeView.gotoSensor), forControlEvents: .TouchUpInside)
+                    greenHouseButton.addTarget(self, action: #selector(GreenHouseHomeView.gotoSensorList(_:)), forControlEvents: .TouchUpInside)
                     buttons.append(greenHouseButton)
                     
                     if (40 + CGFloat((i-1)) * (view.frame.height/10 + 15) + view.frame.height/10) > view.frame.height {
@@ -230,7 +230,7 @@ class GreenHouseHomeView: UIViewController,UIScrollViewDelegate{
     }
     
     
-    func gotoSensor(a:UIButton){
+    func gotoSensorList(a:UIButton){
     
         
         buttonNumber = Int(a.currentTitle!)
@@ -242,8 +242,8 @@ class GreenHouseHomeView: UIViewController,UIScrollViewDelegate{
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "toSensor"{
-        let sensor = segue.destinationViewController as! SensorView
+        if segue.identifier == "toSensorList"{
+        let sensor = segue.destinationViewController as! SensorListViewController
             sensor.id = buttonNumber
         }
         
@@ -269,7 +269,7 @@ class GreenHouseHomeView: UIViewController,UIScrollViewDelegate{
             
             if token == "success"{
                 
-                let data = dic.objectForKey("data") as! NSDictionary
+                let data = dic.objectForKey("data") as! [NSDictionary]
                 print(data)
                 
 //                for key in data.keyEnumerator(){
@@ -280,15 +280,24 @@ class GreenHouseHomeView: UIViewController,UIScrollViewDelegate{
 //                    print(String(data.objectForKey(String(key))!))
 //                    
 //                }
+                for i in 0...data.count - 1{
+                    a.greenhouseId = data[i].objectForKey("greenhouse_id") as! NSNumber
+                    a.sensor_id = data[i].objectForKey("sensor_id") as! String
+                    a.plant_name = data[i].objectForKey("plant_name") as! String
+                    a.temperature = Double(data[i].objectForKey("temperature") as! String)!
+                    a.hnmidity = Double(data[i].objectForKey("humidity") as! String)!
+                    a.start_time = data[i].objectForKey("start_time") as! String
+                    sensors.append(a)
                 
-                let temInfo = data.objectForKey("temperature") as? NSString
-                let hnmInfo = data.objectForKey("humidity") as? NSString
-                houseInfo.removeAll()
-                houseInfo.append(String(temInfo!))
-                houseInfo.append(String(hnmInfo!))
+                }
+//                let temInfo = data.objectForKey("temperature") as? NSString
+//                let hnmInfo = data.objectForKey("humidity") as? NSString
+//                houseInfo.removeAll()
+//                houseInfo.append(String(temInfo!))
+//                houseInfo.append(String(hnmInfo!))
                 
                 
-                self.performSegueWithIdentifier("toSensor", sender: self)
+                self.performSegueWithIdentifier("toSensorList", sender: self)
             }else{
                 let errorMessage = dic.objectForKey("error") as! String
                 print(errorMessage)

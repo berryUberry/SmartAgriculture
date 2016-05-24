@@ -10,8 +10,8 @@ import UIKit
 
 class SensorView: UIViewController {
     
-    
     var id:Int!
+    var sensorId:Int!
     var o = 0
     var timer = NSTimer()
     @IBOutlet weak var temperature: UIImageView!
@@ -28,6 +28,11 @@ class SensorView: UIViewController {
     @IBOutlet weak var temperatureSlider: UISlider!
     @IBOutlet weak var temperatureLabel: UILabel!
  
+    @IBAction func backToSensorList(sender: AnyObject) {
+        
+        self.performSegueWithIdentifier("backToSensorList", sender: self)
+        
+    }
     @IBOutlet weak var hnmiditySlider: UISlider!
     @IBOutlet weak var hnmidityLabel: UILabel!
     @IBOutlet weak var doneButton: UIButton!
@@ -51,11 +56,12 @@ class SensorView: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 228/255, green: 229/255, blue: 198/255, alpha: 1)
         
-//        temperatureValue.text = String(greenHouses[id - 1].temperature)
-//        hnmidityValue.text = String(greenHouses[id - 1].hnmidity)
-        print(houseInfo)
-        temperatureValue.text = houseInfo[0]
-        hnmidityValue.text = houseInfo[1]
+
+        
+        print(sensorId)
+        print(sensors.count)
+        temperatureValue.text = String(sensors[sensorId].temperature)
+        hnmidityValue.text = String(sensors[sensorId].hnmidity)
         
         temperature.layer.cornerRadius = temperature.frame.width/2
         hnmidity.layer.cornerRadius = hnmidity.frame.width/2
@@ -72,23 +78,7 @@ class SensorView: UIViewController {
         temperatureSettingButton.layer.cornerRadius = temperatureSettingButton.frame.width/2
         hnmiditySettingButton.layer.cornerRadius = hnmiditySettingButton.frame.width/2
         
-//        if((NSUserDefaults.standardUserDefaults().boolForKey("launched\(phoneNumber)\(id)") as Bool!) == false){
-//            
-//            temperatureSlider.value = 20
-//            hnmiditySlider.value = 40
-//            //NSUserDefaults.standardUserDefaults().setBool(true, forKey: "launched\(id)")
-//            print("diyici")
-//            
-//        }else{
-//            print(id)
-//            var storedHouse = userDefault.objectForKey("\(phoneNumber)\(id)") as! NSData
-//            //print(storedHouse)
-//            var sHouse = NSKeyedUnarchiver.unarchiveObjectWithData(storedHouse) as! GreenHouse
-//            
-//            temperatureSlider.value = Float(sHouse.settingTemperature)
-//            hnmiditySlider.value = Float(sHouse.settingHnmidity)
-//            
-//        }
+
         
         
         
@@ -110,7 +100,7 @@ class SensorView: UIViewController {
         returnMain.layer.cornerRadius = 22.5
         returnMain.addTarget(self, action: #selector(SensorView.returnMainAction), forControlEvents: .TouchUpInside)
         
-        titleButton.setTitle("\(nameString[id-1])", forState: .Normal)
+        titleButton.setTitle("\(sensors[sensorId].plant_name)", forState: .Normal)
         titleButton.layer.cornerRadius = 12
         
         
@@ -141,7 +131,7 @@ class SensorView: UIViewController {
     
         
         
-        if((NSUserDefaults.standardUserDefaults().boolForKey("launched\(phoneNumber)\(id)") as Bool!) == false){
+        if((NSUserDefaults.standardUserDefaults().boolForKey("launched\(phoneNumber)\(id)\(sensors[sensorId].sensor_id)") as Bool!) == false){
             
             temperatureSlider.value = 20
             hnmiditySlider.value = 40
@@ -152,10 +142,10 @@ class SensorView: UIViewController {
             print("diyici")
             
         }else{
-            print(id)
-            let storedHouse = userDefault.objectForKey("\(phoneNumber)\(id)") as! NSData
+            
+            let storedHouse = userDefault.objectForKey("\(phoneNumber)\(id)\(sensors[sensorId].sensor_id)") as! NSData
             //print(storedHouse)
-            let sHouse = NSKeyedUnarchiver.unarchiveObjectWithData(storedHouse) as! GreenHouse
+            let sHouse = NSKeyedUnarchiver.unarchiveObjectWithData(storedHouse) as! Sensor
             
             temperatureSlider.value = Float(sHouse.settingTemperature)
             hnmiditySlider.value = Float(sHouse.settingHnmidity)
@@ -191,20 +181,7 @@ class SensorView: UIViewController {
     
     func done(){
     
-//        a.settingTemperature = Int(temperatureSlider.value)
-//        a.settingHnmidity = Int(hnmiditySlider.value)
-//        temperatureInit = Int(temperatureSlider.value)
-//        hnmidityInit = Int(hnmiditySlider.value)
-//        greenHouses[id - 1].settingTemperature = Int(temperatureSlider.value)
-//        greenHouses[id - 1].settingHnmidity = Int(hnmiditySlider.value)
-//        
-//        var modelHouse:NSData = NSKeyedArchiver.archivedDataWithRootObject(greenHouses[id - 1])
-//        userDefault.setObject(modelHouse,forKey:"\(id)")
-//        
-//        settingView.hidden = true
-//        backgroundButton.hidden = true
-//        
-//        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "launched\(id)")
+
         connectHttp()
         
     }
@@ -216,8 +193,8 @@ class SensorView: UIViewController {
         
         do {
             
-            let url:NSURL! = NSURL(string:"http://\(ip)/IAServer/Greenhouse/greenhouseSetting.php?greenhouse_id=\(keyString[id - 1])&tem_set=\(temperatureLabel.text!)&hum_set=\(hnmidityLabel.text!)")
-           
+            let url:NSURL! = NSURL(string:"http://\(ip)/IAServer/Greenhouse/greenhouseSetting.php?sensor_id=\(sensors[sensorId].sensor_id)&tem_set=\(temperatureLabel.text!)&hum_set=\(hnmidityLabel.text!)")
+            print(url)
             let urlRequest:NSURLRequest = NSURLRequest(URL: url, cachePolicy: .UseProtocolCachePolicy, timeoutInterval: 10)
             let data:NSData = try NSURLConnection.sendSynchronousRequest(urlRequest, returningResponse: &response)
             let dict:AnyObject? = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
@@ -236,16 +213,16 @@ class SensorView: UIViewController {
                 a.settingHnmidity = Int(hnmiditySlider.value)
                 temperatureInit = Int(temperatureSlider.value)
                 hnmidityInit = Int(hnmiditySlider.value)
-                greenHouses[id - 1].settingTemperature = Int(temperatureSlider.value)
-                greenHouses[id - 1].settingHnmidity = Int(hnmiditySlider.value)
+                sensors[sensorId].settingTemperature = Int(temperatureSlider.value)
+                sensors[sensorId].settingHnmidity = Int(hnmiditySlider.value)
                 
-                let modelHouse:NSData = NSKeyedArchiver.archivedDataWithRootObject(greenHouses[id - 1])
-                userDefault.setObject(modelHouse,forKey:"\(phoneNumber)\(id)")
+                let modelHouse:NSData = NSKeyedArchiver.archivedDataWithRootObject(sensors[sensorId])
+                userDefault.setObject(modelHouse,forKey:"\(phoneNumber)\(id)\(sensors[sensorId].sensor_id)")
                 
 //                settingView.hidden = true
 //                backgroundButton.hidden = true
                 
-                NSUserDefaults.standardUserDefaults().setBool(true, forKey: "launched\(phoneNumber)\(id)")
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: "launched\(phoneNumber)\(id)\(sensors[sensorId].sensor_id)")
 
                 
                 
@@ -281,26 +258,29 @@ class SensorView: UIViewController {
             let dict:AnyObject? = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
             
             
-            
+            print("qqwqwqwq")
             let dic = dict as! NSDictionary
             
             let token = dic.objectForKey("token") as! String?
             
             if token == "success"{
                 
-                let data = dic.objectForKey("data") as! NSDictionary
+                let data = dic.objectForKey("data") as! [NSDictionary]
                 print(data)
+                sensors.removeAll()
+                for i in 0...data.count - 1{
+                    a.greenhouseId = data[i].objectForKey("greenhouse_id") as! NSNumber
+                    a.sensor_id = data[i].objectForKey("sensor_id") as! String
+                    a.plant_name = data[i].objectForKey("plant_name") as! String
+                    a.temperature = Double(data[i].objectForKey("temperature") as! String)!
+                    a.hnmidity = Double(data[i].objectForKey("humidity") as! String)!
+                    a.start_time = data[i].objectForKey("start_time") as! String
+                    sensors.append(a)
+                    
+                }
                 
-                
-                let temInfo = data.objectForKey("temperature") as? NSString
-                let hnmInfo = data.objectForKey("humidity") as? NSString
-                houseInfo.removeAll()
-                houseInfo.append(String(temInfo!))
-                houseInfo.append(String(hnmInfo!))
-                
-                temperatureValue.text = houseInfo[0]
-                hnmidityValue.text = houseInfo[1]
-                
+                temperatureValue.text = String(sensors[sensorId].temperature)
+                hnmidityValue.text = String(sensors[sensorId].hnmidity)
                 
             }else{
                 let errorMessage = dic.objectForKey("error") as! String
@@ -310,7 +290,7 @@ class SensorView: UIViewController {
                 
             }
             
-        
+            
         }
         catch{
             
@@ -321,4 +301,13 @@ class SensorView: UIViewController {
     
     }
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "backToSensorList"{
+            let SL = segue.destinationViewController as! SensorListViewController
+            SL.sensorId = self.sensorId
+            SL.id = self.id
+        
+        }
+    }
+    
 }

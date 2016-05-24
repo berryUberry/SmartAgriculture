@@ -8,13 +8,16 @@
 
 import UIKit
 
-class GreenHouse:NSObject{
+class Sensor:NSObject{
 
     var temperature:Double
     var hnmidity:Double
     var settingTemperature:Int
     var settingHnmidity:Int
-    
+    var greenhouseId:NSNumber!
+    var sensor_id:String!
+    var plant_name:String!
+    var start_time:String!
     override init(){
         temperature = 0.0
         hnmidity = 0.0

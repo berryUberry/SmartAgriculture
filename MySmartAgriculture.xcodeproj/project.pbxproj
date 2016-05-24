@@ -9,19 +9,21 @@
 /* Begin PBXBuildFile section */
 		D50AA7451CF2EE5F0011CD96 /* SensorListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50AA7441CF2EE5F0011CD96 /* SensorListViewController.swift */; };
 		D50AA7481CF2F3190011CD96 /* SensorCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50AA7471CF2F3190011CD96 /* SensorCells.swift */; };
+		D50AA74A1CF42A910011CD96 /* greenHouse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50AA7491CF42A910011CD96 /* greenHouse.swift */; };
 		D57DB1FF1CABF6A9008ED6AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DB1FE1CABF6A9008ED6AE /* AppDelegate.swift */; };
 		D57DB2011CABF6A9008ED6AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DB2001CABF6A9008ED6AE /* ViewController.swift */; };
 		D57DB2041CABF6A9008ED6AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D57DB2021CABF6A9008ED6AE /* Main.storyboard */; };
 		D57DB2061CABF6A9008ED6AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D57DB2051CABF6A9008ED6AE /* Assets.xcassets */; };
 		D57DB2091CABF6A9008ED6AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D57DB2071CABF6A9008ED6AE /* LaunchScreen.storyboard */; };
 		D57DB2111CAC10A8008ED6AE /* GreenHouseHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DB2101CAC10A8008ED6AE /* GreenHouseHomeView.swift */; };
-		D57DB2151CAC172D008ED6AE /* Greenhouse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DB2141CAC172D008ED6AE /* Greenhouse.swift */; };
+		D57DB2151CAC172D008ED6AE /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DB2141CAC172D008ED6AE /* Sensor.swift */; };
 		D57DB2171CACB1F9008ED6AE /* SensorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DB2161CACB1F9008ED6AE /* SensorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D50AA7441CF2EE5F0011CD96 /* SensorListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorListViewController.swift; sourceTree = "<group>"; };
 		D50AA7471CF2F3190011CD96 /* SensorCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorCells.swift; sourceTree = "<group>"; };
+		D50AA7491CF42A910011CD96 /* greenHouse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = greenHouse.swift; sourceTree = "<group>"; };
 		D57DB1FB1CABF6A9008ED6AE /* MySmartAgriculture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySmartAgriculture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D57DB1FE1CABF6A9008ED6AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D57DB2001CABF6A9008ED6AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -30,7 +32,7 @@
 		D57DB2081CABF6A9008ED6AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D57DB20A1CABF6A9008ED6AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D57DB2101CAC10A8008ED6AE /* GreenHouseHomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreenHouseHomeView.swift; sourceTree = "<group>"; };
-		D57DB2141CAC172D008ED6AE /* Greenhouse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Greenhouse.swift; sourceTree = "<group>"; };
+		D57DB2141CAC172D008ED6AE /* Sensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sensor.swift; sourceTree = "<group>"; };
 		D57DB2161CACB1F9008ED6AE /* SensorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,7 +100,8 @@
 		D57DB2131CAC1710008ED6AE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D57DB2141CAC172D008ED6AE /* Greenhouse.swift */,
+				D57DB2141CAC172D008ED6AE /* Sensor.swift */,
+				D50AA7491CF42A910011CD96 /* greenHouse.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -175,8 +178,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D50AA74A1CF42A910011CD96 /* greenHouse.swift in Sources */,
 				D57DB2171CACB1F9008ED6AE /* SensorView.swift in Sources */,
-				D57DB2151CAC172D008ED6AE /* Greenhouse.swift in Sources */,
+				D57DB2151CAC172D008ED6AE /* Sensor.swift in Sources */,
 				D50AA7451CF2EE5F0011CD96 /* SensorListViewController.swift in Sources */,
 				D57DB2111CAC10A8008ED6AE /* GreenHouseHomeView.swift in Sources */,
 				D50AA7481CF2F3190011CD96 /* SensorCells.swift in Sources */,

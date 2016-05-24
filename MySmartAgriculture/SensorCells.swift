@@ -11,7 +11,8 @@ import UIKit
 class SensorCells:UITableViewCell{
 
 
-    @IBOutlet weak var sensorImage: UIImageView!
+
+    @IBOutlet weak var buttonImage: UIButton!
     
     @IBOutlet weak var sensorName: UILabel!
 
