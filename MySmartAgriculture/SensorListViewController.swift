@@ -46,8 +46,8 @@ class SensorListViewController: UIViewController,UITableViewDelegate,UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("sensorCells") as! SensorCells
         cell.sensorName.text = sensors[indexPath.row].plant_name
-        cell.sensorTem.text = String(sensors[indexPath.row].temperature)
-        cell.sensorHnm.text = String(sensors[indexPath.row].hnmidity)
+        cell.sensorTem.text = "\(String(sensors[indexPath.row].temperature)) ℃"
+        cell.sensorHnm.text = "\(String(sensors[indexPath.row].hnmidity)) %"
 
         let randomColor:Int = Int(arc4random_uniform(7))
         cell.buttonImage.backgroundColor = greenHouseColor(randomColor)

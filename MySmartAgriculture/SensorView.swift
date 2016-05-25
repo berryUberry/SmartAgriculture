@@ -16,7 +16,8 @@ class SensorView: UIViewController {
     var timer = NSTimer()
     @IBOutlet weak var temperature: UIImageView!
     @IBOutlet weak var hnmidity: UIImageView!
-    
+    @IBOutlet weak var sensorID: UILabel!
+    @IBOutlet weak var startTime: UILabel!
  
     @IBOutlet weak var setting: UIButton!
 
@@ -43,7 +44,13 @@ class SensorView: UIViewController {
     @IBOutlet weak var temperatureValue: UILabel!
     @IBOutlet weak var hnmidityValue: UILabel!
 
+    @IBOutlet weak var formButton: UIButton!
     
+    @IBAction func gotoForm(sender: AnyObject) {
+        
+        self.performSegueWithIdentifier("gotoForm", sender: self)
+        
+    }
     var backgroundButton:UIButton!
     
     var temperatureInit:Int = 20
@@ -62,7 +69,7 @@ class SensorView: UIViewController {
         print(sensors.count)
         temperatureValue.text = String(sensors[sensorId].temperature)
         hnmidityValue.text = String(sensors[sensorId].hnmidity)
-        
+
         temperature.layer.cornerRadius = temperature.frame.width/2
         hnmidity.layer.cornerRadius = hnmidity.frame.width/2
         setting.layer.cornerRadius = 25
@@ -86,6 +93,13 @@ class SensorView: UIViewController {
         
         temperatureLabel.text = String(Int(floor(temperatureSlider.value)))
         hnmidityLabel.text = String(Int(floor(hnmiditySlider.value)))
+        sensorID.text = "传感器ID:  \(String(sensors[sensorId].sensor_id))"
+        startTime.text = "种植时间:  \(String(sensors[sensorId].start_time))"
+        
+        formButton.setTitle("表单", forState: .Normal)
+        formButton.layer.cornerRadius = 12
+        formButton.clipsToBounds = true
+        
         temperatureSlider.addTarget(self, action: #selector(SensorView.valueChanged), forControlEvents: .ValueChanged)
         hnmiditySlider.addTarget(self, action: #selector(SensorView.valueChanged), forControlEvents: .ValueChanged)
         
@@ -306,6 +320,12 @@ class SensorView: UIViewController {
             let SL = segue.destinationViewController as! SensorListViewController
             SL.sensorId = self.sensorId
             SL.id = self.id
+        
+        }else if segue.identifier == "gotoForm"{
+        
+            let form = segue.destinationViewController as! FormViewController
+            form.id = self.id
+            form.sensorId = self.sensorId
         
         }
     }
