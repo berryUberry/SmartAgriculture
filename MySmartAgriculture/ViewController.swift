@@ -13,7 +13,7 @@ var sensors = [Sensor]()
 var keyString = [String]()
 var keyString2 = [String]()
 var nameString = [String]()
-var houseInfo = [String]()
+
 var a = Sensor(temperature:1.1,hnmidity: 1.1)
 var userDefault:NSUserDefaults = NSUserDefaults.standardUserDefaults()
 var number:Int = 1

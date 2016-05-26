@@ -30,6 +30,11 @@ class FormViewController: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var grayButton: UIButton!
     
+    
+    @IBOutlet weak var resultView: UIView!
+    
+    @IBOutlet weak var resultLabel: UILabel!
+    
     @IBAction func done(sender: AnyObject) {
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
@@ -54,14 +59,15 @@ class FormViewController: UIViewController,UITextFieldDelegate {
     
     var id:Int!
     var sensorId:Int!
-    
-    
+    var timer:NSTimer!
+    var time = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         waitView.hidden = true
         grayButton.hidden = true
+        resultView.hidden = true
         deletePlant.placeholder = sensors[sensorId].plant_name
         deletePlant.enabled = false
         
@@ -71,6 +77,8 @@ class FormViewController: UIViewController,UITextFieldDelegate {
         doneButton.clipsToBounds = true
         backButton.layer.cornerRadius = 12
         backButton.clipsToBounds = true
+        
+        
         
     }
     
@@ -104,18 +112,32 @@ class FormViewController: UIViewController,UITextFieldDelegate {
 
                 sensors[sensorId].plant_name = addPlant.text!
                 sensors[sensorId].start_time = startTime.text!
-                addPlant.text = nil
-                startTime.text = nil
+                
                 dispatch_async(dispatch_get_main_queue(), {
+                    self.addPlant.text = nil
+                    self.startTime.text = nil
                     self.waitView.hidden = true
                     self.grayButton.hidden = true
                     self.indicatorView.stopAnimating()
+                    
+                    self.resultView.hidden = false
+                    self.resultLabel.text = "修改成功!"
+                    self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(UIAlertView.show), userInfo: nil, repeats: true)
                 })
                 
                 
             }else{
-                let errorMessage = dic.objectForKey("error") as! String
-                print(errorMessage)
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.waitView.hidden = true
+                    self.grayButton.hidden = true
+                    self.indicatorView.stopAnimating()
+                    let errorMessage = dic.objectForKey("error") as! String
+                    print(errorMessage)
+                    self.resultView.hidden = false
+                    self.resultLabel.text = errorMessage
+                    self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(UIAlertView.show), userInfo: nil, repeats: true)
+                })
                 
                 
                 
@@ -125,10 +147,35 @@ class FormViewController: UIViewController,UITextFieldDelegate {
         }
         catch{
             
-            print("网络问题")
+            dispatch_async(dispatch_get_main_queue(), {
+                print("网络问题")
+                self.waitView.hidden = true
+                self.grayButton.hidden = true
+                self.indicatorView.stopAnimating()
+                
+                self.resultView.hidden = false
+                self.resultLabel.text = "网络问题!"
+                self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(UIAlertView.show), userInfo: nil, repeats: true)
+            })
+            
             
         }
         
+    }
+    
+    
+    func show(){
+        
+        if time == 1{
+            
+            
+            self.resultView.hidden = true
+            self.timer.invalidate()
+            
+            time = 0
+        }
+        time += 1
+    
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

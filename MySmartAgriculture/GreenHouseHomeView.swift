@@ -29,7 +29,7 @@ class GreenHouseHomeView: UIViewController,UIScrollViewDelegate{
         keyString.removeAll()
         keyString2.removeAll()
         nameString.removeAll()
-        houseInfo.removeAll()
+        
         
     }
    

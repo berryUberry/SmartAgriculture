@@ -11,22 +11,29 @@ import UIKit
 class SensorListViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var id:Int!
     var sensorId:Int!
+    var refreshControl = UIRefreshControl()
     @IBAction func backToHome(sender: AnyObject) {
         self.performSegueWithIdentifier("backToHome", sender: self)
         
-            sensors.removeAll()
+        sensors.removeAll()
     }
     @IBOutlet weak var greenName: UIButton!
     
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print(nameString[id-1])
         greenName.setTitle("\(nameString[id-1])", forState: .Normal)
         greenName.layer.cornerRadius = 12
+        greenName.enabled = false
         backButton.layer.cornerRadius = backButton.frame.width/2
         backButton.clipsToBounds = true
+        
+        refreshControl.addTarget(self, action: #selector(SensorListViewController.refreshData), forControlEvents: .ValueChanged)
+        refreshControl.attributedTitle = NSAttributedString(string: "松开后自动刷新")
+        tableView.addSubview(refreshControl)
         
         // Do any additional setup after loading the view.
     }
@@ -110,6 +117,65 @@ class SensorListViewController: UIViewController,UITableViewDelegate,UITableView
         default:
             return UIColor.whiteColor()
         }
+    }
+    
+    
+    
+    func refreshData(){
+    
+        print("刷新")
+        
+        sensors.removeAll()
+        
+        
+        do {
+            
+            let url:NSURL! = NSURL(string:"http://\(ip)/IAServer/Greenhouse/greenhouseInfo.php?greenhouse_id=\(keyString[id - 1])")
+            let urlRequest:NSURLRequest = NSURLRequest(URL: url, cachePolicy: .UseProtocolCachePolicy, timeoutInterval: 20)
+            let data:NSData = try NSURLConnection.sendSynchronousRequest(urlRequest, returningResponse: &response)
+            let dict:AnyObject? = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+            
+            
+            
+            let dic = dict as! NSDictionary
+            
+            let token = dic.objectForKey("token") as! String?
+            
+            if token == "success"{
+                
+                let data = dic.objectForKey("data") as! [NSDictionary]
+                for i in 0...data.count - 1{
+                    a.greenhouseId = data[i].objectForKey("greenhouse_id") as! NSNumber
+                    a.sensor_id = data[i].objectForKey("sensor_id") as! String
+                    a.plant_name = data[i].objectForKey("plant_name") as! String
+                    a.temperature = Double(data[i].objectForKey("temperature") as! String)!
+                    a.hnmidity = Double(data[i].objectForKey("humidity") as! String)!
+                    a.start_time = data[i].objectForKey("start_time") as! String
+                    sensors.append(a)
+                    
+                }
+                refreshControl.endRefreshing()
+                tableView.reloadData()
+
+            }else{
+                let errorMessage = dic.objectForKey("error") as! String
+                print(errorMessage)
+                
+                
+                
+            }
+            
+            
+        }
+        catch{
+            
+            print("网络问题")
+            
+        }
+        
+    
+
+    
     }
     /*
     // MARK: - Navigation

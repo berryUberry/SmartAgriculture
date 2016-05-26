@@ -48,6 +48,7 @@ class SensorView: UIViewController {
     
     @IBAction func gotoForm(sender: AnyObject) {
         
+        timer.invalidate()
         self.performSegueWithIdentifier("gotoForm", sender: self)
         
     }
@@ -118,7 +119,7 @@ class SensorView: UIViewController {
         titleButton.layer.cornerRadius = 12
         
         
-        timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(SensorView.THConnectHttp), userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(120, target: self, selector: #selector(SensorView.THConnectHttp), userInfo: nil, repeats: true)
         
         timer.fire()
         
