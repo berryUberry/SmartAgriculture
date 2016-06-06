@@ -112,8 +112,8 @@ class ViewController: UIViewController,UITextFieldDelegate {
 //        dispatch_async(dispatch_get_main_queue(), { () -> Void in
 //            self.loginButton2.setTitle("正在登录...", forState: .Normal)
 //                            })
-        phoneNumber = phoneNumberText.text
-        password = passwordText.text
+        phoneNumber = phoneNumberText.text!
+        password = passwordText.text!
         wrongText.hidden = true
         
         
@@ -160,7 +160,8 @@ class ViewController: UIViewController,UITextFieldDelegate {
 //                }
 //                self.performSegueWithIdentifier("loginSuccess", sender: self)
                 
-          
+                userDefault.setObject(phoneNumber, forKey: "identifier")
+                userDefault.setObject(password, forKey: "password")
                 
                 let data = dic.objectForKey("data") as! NSArray
                 print(data)

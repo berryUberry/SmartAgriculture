@@ -12,6 +12,10 @@ class SensorListViewController: UIViewController,UITableViewDelegate,UITableView
     var id:Int!
     var sensorId:Int!
     var refreshControl = UIRefreshControl()
+    
+
+    
+    
     @IBAction func backToHome(sender: AnyObject) {
         self.performSegueWithIdentifier("backToHome", sender: self)
         
@@ -22,8 +26,15 @@ class SensorListViewController: UIViewController,UITableViewDelegate,UITableView
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
+
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
+        
         print(nameString[id-1])
         greenName.setTitle("\(nameString[id-1])", forState: .Normal)
         greenName.layer.cornerRadius = 12
@@ -66,6 +77,9 @@ class SensorListViewController: UIViewController,UITableViewDelegate,UITableView
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         sensorId = indexPath.row
+        
+        
+        
         self.performSegueWithIdentifier("toSensor", sender: self)
         
     }
@@ -177,6 +191,8 @@ class SensorListViewController: UIViewController,UITableViewDelegate,UITableView
 
     
     }
+
+    
     /*
     // MARK: - Navigation
 

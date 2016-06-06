@@ -18,6 +18,8 @@ class GreenHouseHomeView: UIViewController,UIScrollViewDelegate{
     var number = 1
     var scrollView = UIScrollView()
     
+    var timer2:NSTimer!
+    var time = 0
     
     var timer = NSTimer()
     
@@ -29,11 +31,20 @@ class GreenHouseHomeView: UIViewController,UIScrollViewDelegate{
         keyString.removeAll()
         keyString2.removeAll()
         nameString.removeAll()
+        userDefault.setObject(nil, forKey: "identifier")
+        userDefault.setObject(nil, forKey: "password")
         
         
     }
    
+    @IBOutlet weak var grayButton: UIButton!
 
+    @IBOutlet weak var waitView: UIView!
+    
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
+    
+    
+    @IBOutlet weak var resultView: UIView!
     
     
     override func viewDidLoad() {
@@ -41,7 +52,9 @@ class GreenHouseHomeView: UIViewController,UIScrollViewDelegate{
         print(nameString)
         print(keyString)
         super.viewDidLoad()
-
+        grayButton.hidden = true
+        waitView.hidden = true
+        resultView.hidden = true
         
         view.backgroundColor = UIColor(red: 228/255, green: 229/255, blue: 198/255, alpha: 1)
         
@@ -63,7 +76,9 @@ class GreenHouseHomeView: UIViewController,UIScrollViewDelegate{
         dispatch_async(dispatch_get_main_queue()) {
             self.createHouses()
             
-            
+            self.view.bringSubviewToFront(self.grayButton)
+            self.view.bringSubviewToFront(self.waitView)
+            self.view.bringSubviewToFront(self.resultView)
             self.timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(GreenHouseHomeView.buttonAction), userInfo: nil, repeats: true)
             
             self.timer.fire()
@@ -236,7 +251,17 @@ class GreenHouseHomeView: UIViewController,UIScrollViewDelegate{
         buttonNumber = Int(a.currentTitle!)
         
         print("ppppp\(buttonNumber)")
-        connectHttp(buttonNumber)
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                self.grayButton.hidden = false
+                self.waitView.hidden = false
+                self.indicator.startAnimating()
+            })
+            self.connectHttp(self.buttonNumber)
+        }
+        
+        
     
 
     }
@@ -296,8 +321,13 @@ class GreenHouseHomeView: UIViewController,UIScrollViewDelegate{
 //                houseInfo.append(String(temInfo!))
 //                houseInfo.append(String(hnmInfo!))
                 
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.waitView.hidden = true
+                    self.grayButton.hidden = true
+                    self.indicator.stopAnimating()
+                    self.performSegueWithIdentifier("toSensorList", sender: self)
+                })
                 
-                self.performSegueWithIdentifier("toSensorList", sender: self)
             }else{
                 let errorMessage = dic.objectForKey("error") as! String
                 print(errorMessage)
@@ -310,6 +340,14 @@ class GreenHouseHomeView: UIViewController,UIScrollViewDelegate{
         }
         catch{
             
+            dispatch_async(dispatch_get_main_queue(), {
+                self.waitView.hidden = true
+                self.grayButton.hidden = true
+                self.indicator.stopAnimating()
+                
+                self.resultView.hidden = false
+                self.timer2 = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(UIAlertView.show), userInfo: nil, repeats: true)
+            })
             print("网络问题")
             
         }
@@ -317,7 +355,20 @@ class GreenHouseHomeView: UIViewController,UIScrollViewDelegate{
     }
 
     
-   
+    func show(){
+        
+        if time == 1{
+            
+            
+            self.resultView.hidden = true
+            self.timer2.invalidate()
+            
+            time = 0
+        }
+        time += 1
+    
+    
+    }
     
     /*
     // MARK: - Navigation
