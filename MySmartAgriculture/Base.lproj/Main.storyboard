@@ -1054,9 +1054,9 @@
         <image name="temperature" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TCI-5q-3gr"/>
-        <segue reference="DSE-3k-79X"/>
         <segue reference="gKf-Iu-X7y"/>
+        <segue reference="TCI-5q-3gr"/>
+        <segue reference="b3r-dp-9DM"/>
         <segue reference="NOd-MO-2cE"/>
     </inferredMetricsTieBreakers>
 </document>
