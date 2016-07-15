@@ -87,7 +87,7 @@ class AutoLoginViewController: UIViewController {
                     self.indicator.stopAnimating()
                     
                     self.resultView.hidden = false
-                    self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(UIAlertView.show), userInfo: nil, repeats: true)
+                    self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(AutoLoginViewController.show), userInfo: nil, repeats: true)
             
                 })
                 
@@ -111,7 +111,7 @@ class AutoLoginViewController: UIViewController {
                 self.indicator.stopAnimating()
                 
                 self.resultView.hidden = false
-                self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(UIAlertView.show), userInfo: nil, repeats: true)
+                self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(AutoLoginViewController.show), userInfo: nil, repeats: true)
             })
             
             

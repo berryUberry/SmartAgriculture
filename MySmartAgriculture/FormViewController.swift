@@ -122,7 +122,7 @@ class FormViewController: UIViewController,UITextFieldDelegate {
                     
                     self.resultView.hidden = false
                     self.resultLabel.text = "修改成功!"
-                    self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(UIAlertView.show), userInfo: nil, repeats: true)
+                    self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(FormViewController.show), userInfo: nil, repeats: true)
                 })
                 
                 
@@ -136,7 +136,7 @@ class FormViewController: UIViewController,UITextFieldDelegate {
                     print(errorMessage)
                     self.resultView.hidden = false
                     self.resultLabel.text = errorMessage
-                    self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(UIAlertView.show), userInfo: nil, repeats: true)
+                    self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(FormViewController.show), userInfo: nil, repeats: true)
                 })
                 
                 
@@ -155,7 +155,7 @@ class FormViewController: UIViewController,UITextFieldDelegate {
                 
                 self.resultView.hidden = false
                 self.resultLabel.text = "网络问题!"
-                self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(UIAlertView.show), userInfo: nil, repeats: true)
+                self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(FormViewController.show), userInfo: nil, repeats: true)
             })
             
             

@@ -346,7 +346,7 @@ class GreenHouseHomeView: UIViewController,UIScrollViewDelegate{
                 self.indicator.stopAnimating()
                 
                 self.resultView.hidden = false
-                self.timer2 = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(UIAlertView.show), userInfo: nil, repeats: true)
+                self.timer2 = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(GreenHouseHomeView.show), userInfo: nil, repeats: true)
             })
             print("网络问题")
             
